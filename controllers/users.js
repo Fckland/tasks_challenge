@@ -23,31 +23,14 @@ const getUsers = async (req, res) => {
 
 // GET /users/:id: Retrieve a single user by ID. The user should be returned in JSON format.
 const getUserId = async (req, res) => {
-  const kjhzx = req.headers.id;
-  console.log(kjhzx);
-  // const [total, usuarios] = await Promise.all([
-  //   // Cuenta cuantos datos guardados hay
-  //   User.countDocuments(id),
-  //   // Filtra segun el query, con skip dice desde donde y limit dice cuantos
-  //   User.find(id).skip(Number(desde)).limit(Number(limite)),
-  // ]);
+  const id = req.query;
+  console.log(id);
+  const user = await User.findOne(id)
 
   res.json({
-    kjhzx,
-    // id,
-    // total,
-    // usuarios,
+    user
   });
-
-  // I get the id from the request
-  // const id = parseInt(req.params.id);
-
-  // // Search the id in the userDB and return the user if found
-  // const user = userDB.find((c) => c.id === id);
-  // res.json({
-  //   user,
-  // });
-};
+}
 
 // POST /users: Create a new user. The request body should contain the user details in JSON format.
 const postUsers = async (req, res) => {
