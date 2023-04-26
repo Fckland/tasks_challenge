@@ -8,10 +8,14 @@ const taskSchema = new Schema({
   description: {
     type: String,
   },
-  password: {
+  completed: {
     type: Boolean,
     default: false,
   },
+  uid: {
+    type: String,
+    required: true,
+  }
 });
 
 module.exports = model("Task", taskSchema);

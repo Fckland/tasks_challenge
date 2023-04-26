@@ -1,4 +1,5 @@
 const { request, response } = require("express");
+const jwt_decode = require("jwt-decode");
 
 const Task = require("../models/task");
 
@@ -55,9 +56,16 @@ description: A description of the task (optional).
 completed: A boolean indicating whether the task has been completed (default: false).
  */
 const postTasks = async (req, res) => {
-  const { name, description = "", completed = false } = req.body;
+  let { name, description = "", completed = false } = req.body;
+  const { token } = req.headers;
 
-  const newTask = new Task({ name, description, completed });
+  const tokenDecoded = jwt_decode(token);
+  const { uid } = tokenDecoded;
+  name = name.trim().toUpperCase();
+  description = description.trim().toUpperCase();
+
+  // TENGO QUE AGREGAR EL PATH USUARIO
+  const newTask = new Task({ name, description, completed, uid });
 
   await newTask.save();
 

@@ -25,7 +25,7 @@ Bonus
 Use ESLint to lint the code and enforce a consistent style. Airbnb style guide.
 Use Prettier to automatically format the code according to a consistent style. ✓
 Use Swagger or JSDoc to document the API.
-Add authentication to the API using JSON Web Tokens (JWTs). Require a valid JWT to access any of the API endpoints.
+Add authentication to the API using JSON Web Tokens (JWTs). Require a valid JWT to access any of the API endpoints. ✓
 Implement filtering, pagination, and sorting for the GET /tasks endpoint. Allow the client to specify query parameters to filter the tasks by completion status, to paginate through the results, and to sort the results by a specific field. ✓
 
 Additional Notes

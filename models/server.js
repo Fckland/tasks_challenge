@@ -8,7 +8,9 @@ class Server {
   constructor() {
     this.app = express();
     this.path = {
-      tasks: "/",
+      login: "/login",
+      tasks: "/tasks",
+      users: "/users",
     };
     this.conectarDB();
     this.middleware();
@@ -23,7 +25,9 @@ class Server {
     this.app.use(express.json());
   }
   routes() {
+    this.app.use(this.path.login, require("../routes/login"));
     this.app.use(this.path.tasks, require("../routes/tasks"));
+    this.app.use(this.path.users, require("../routes/users"));
   }
   listen() {
     this.app.listen(3000, () => {
